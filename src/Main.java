@@ -13,7 +13,7 @@ public abstract class Main extends TimerTask {
 	// Setting up all the variables that are used in this file
 	//
 	// Location of the folders that are to be searched
-	static File secondFolder = new File("C:\\Users\\faiza\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+	static File secondFolder = new File("C:\\Users\\username\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
 	static File startFiles = new File("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs");				
 	//location and name of the files created
 	static String inputPath = "C:/ProgramData/RunnerProgramsListUnsorted.txt";
@@ -21,8 +21,8 @@ public abstract class Main extends TimerTask {
 	static FileFinder filefinder = new FileFinder();
 	static AlphabeticallySortLinesOfTextInFile sort = new AlphabeticallySortLinesOfTextInFile();
 	// URL of website where the IFTTT webhooks points to
-	static String webSite = "http://frictionstudios.ga/app.txt";
-	static String reSetUrl = "http://frictionstudios.ga/reset.php";
+	static String webSite = "http://web.site/app.txt";
+	static String reSetUrl = "http://web.site/reset.php";
 	static Map<String, String> programs = new HashMap<String, String>();
 	
 	//
