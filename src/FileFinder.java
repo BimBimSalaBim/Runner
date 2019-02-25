@@ -15,11 +15,12 @@ public class FileFinder {
 		       // System.out.println(fList[i].getName());
 		        String name = fList[i].getName();
 		   		String[] newProgramName = name.split("\\.");
+		   		String programName = newProgramName[0].toLowerCase().replaceAll("\\s+","");
 		  		if (newProgramName.length != 2) {
 		  			System.out.println("Invalid data entry read: " + newProgramName);
 		    		continue;
 		  		}
-				String FinalProgramName = newProgramName[0].toLowerCase() + "[`!`]" + fList[i].getAbsolutePath();
+				String FinalProgramName = programName + "[`!`]" + fList[i].getAbsolutePath();
 				try {
 					    FileWriter fw = new FileWriter(filePath,true); //the true will append the new data
 					    fw.write(FinalProgramName+"\n");//appends the string to the file

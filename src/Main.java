@@ -1,7 +1,9 @@
 
 import java.util.*;
+import java.awt.SystemTray;
 import java.io.*;
 import java.net.*;
+
 /**
  * @author Faizan Zafar
  *
@@ -10,17 +12,17 @@ public abstract class Main extends TimerTask {
 	//
 	// Setting up all the variables that are used in this file
 	//
-	static FileFinder filefinder = new FileFinder();
-	static AlphabeticallySortLinesOfTextInFile sort = new AlphabeticallySortLinesOfTextInFile();
 	// Location of the folders that are to be searched
-	static File startFiles = new File("C:\\Users\\ /*replace with user */ \\Documents\\shortcuts");
-	static File secondFolder = new File("C:\\Users\\/*replace with user */ \\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+	static File secondFolder = new File("C:\\Users\\faiza\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs");
+	static File startFiles = new File("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs");				
 	//location and name of the files created
 	static String inputPath = "C:/ProgramData/RunnerProgramsListUnsorted.txt";
 	static String filePath = "C:/ProgramData/RunnerProgramsList.txt";
+	static FileFinder filefinder = new FileFinder();
+	static AlphabeticallySortLinesOfTextInFile sort = new AlphabeticallySortLinesOfTextInFile();
 	// URL of website where the IFTTT webhooks points to
-	static String webSite = "http://YOURWEB.SITE/app.txt";
-	static String reSetUrl = "http://YOURWEB.SITE/reset.php";
+	static String webSite = "http://frictionstudios.ga/app.txt";
+	static String reSetUrl = "http://frictionstudios.ga/reset.php";
 	static Map<String, String> programs = new HashMap<String, String>();
 	
 	//
@@ -59,7 +61,19 @@ public abstract class Main extends TimerTask {
 		{
 				String program = programs.get(input);
 				System.out.println(program);
+				if (program != null) {
 				run(program);
+				  if (SystemTray.isSupported()) {
+			            Notifacation td = new Notifacation();
+			            td.displayTray("Runner", "Now Running "+rawinput);
+			        }
+				}
+				else {
+					  if (SystemTray.isSupported()) {
+				            Notifacation td = new Notifacation();
+				            td.displayTray("Runner Error", "There is no program with name "+rawinput);
+					  }
+					 }
 		}else if (input.equals("quit")) 
 		{
 			System.exit(0);
